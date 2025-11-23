@@ -1,4 +1,4 @@
-use bevy::{prelude::*};
+use bevy::{camera::ScalingMode, prelude::*};
 
 fn main() {
     App::new()
@@ -81,9 +81,24 @@ fn setup(
     ));
 
     // Camera
+    // commands.spawn((
+    //     Camera3d::default(),
+    //     Transform::from_xyz(2.0, 4.5, 5.0).looking_at(Vec3::ZERO, Vec3::Y),
+    // ));
+
+    //Orthographic Camera
+        // camera
     commands.spawn((
         Camera3d::default(),
-        Transform::from_xyz(2.0, 4.5, 5.0).looking_at(Vec3::ZERO, Vec3::Y),
+        Projection::from(OrthographicProjection {
+            // 6 world units per pixel of window height.
+            scaling_mode: ScalingMode::FixedVertical {
+                viewport_height: 4.5,
+            },
+            ..OrthographicProjection::default_3d()
+        }),
+        Transform::from_xyz(5.0, 5.0, 5.0).looking_at(Vec3::ZERO, Vec3::Y),
     ));
+
 
 }
