@@ -20,9 +20,20 @@ fn setup(
         MeshMaterial3d(materials.add(Color::srgb(0.3, 0.5, 0.3))),
     ));
 
+    // Chicken Model
     commands.spawn(SceneRoot(
         asset_server.load(GltfAssetLabel::Scene(0).from_asset("models/animated/chicken.glb")),
     ));
+
+    // Rock
+    commands.spawn((
+        SceneRoot(asset_server.load(
+            GltfAssetLabel::Scene(0).from_asset("models/rocks/rock3/Rock_3_H_Color1.glb"),
+        )),
+        Transform::from_xyz(1.5, 0.2, 1.5)
+            .with_scale(Vec3::new(0.5, 0.5, 0.5))
+    ));
+
 
     // Light
     commands.spawn((
