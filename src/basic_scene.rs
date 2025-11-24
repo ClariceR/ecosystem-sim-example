@@ -7,14 +7,27 @@ pub fn basic_scene_setup(
     asset_server: &AssetServer,
 ) {
     // Plane
-    commands.spawn((
-        Mesh3d(meshes.add(Plane3d::default().mesh().size(5.0, 5.0))),
-        MeshMaterial3d(materials.add(Color::srgb(0.3, 0.5, 0.3))),
+    // commands.spawn((
+    //     Mesh3d(meshes.add(Plane3d::default().mesh().size(5.0, 5.0))),
+    //     MeshMaterial3d(materials.add(Color::srgb(0.3, 0.5, 0.3))),
+    // ));
+
+    //Grass Tile
+    // commands.spawn(SceneRoot(
+    //     asset_server.load(GltfAssetLabel::Scene(0).from_asset("models/tiles/green_tile4x4.glb"))
+    // ));
+
+    //Water Tile
+    commands.spawn(SceneRoot(
+        asset_server.load(GltfAssetLabel::Scene(0).from_asset("models/tiles/watertile.glb"))
     ));
 
     // Chicken Model
-    commands.spawn(SceneRoot(
+    commands.spawn((
+        SceneRoot(
         asset_server.load(GltfAssetLabel::Scene(0).from_asset("models/animated/chicken2.glb")),
+        ),
+        Transform::from_xyz(0.0, 0.1, 0.0)
     ));
 
     // Rock
@@ -22,7 +35,7 @@ pub fn basic_scene_setup(
         SceneRoot(asset_server.load(
             GltfAssetLabel::Scene(0).from_asset("models/nature/Rock_3_H_Color1.glb"),
         )),
-        Transform::from_xyz(1.5, 0.2, 1.5)
+        Transform::from_xyz(1.5, 0.3, 1.5)
             .with_scale(Vec3::new(0.5, 0.5, 0.5))
     ));
 
@@ -31,7 +44,7 @@ pub fn basic_scene_setup(
         SceneRoot(asset_server.load(
             GltfAssetLabel::Scene(0).from_asset("models/nature/grass1and2.glb"),
         )),
-        Transform::from_xyz(0.8, 0.0, 1.6)
+        Transform::from_xyz(0.8, 0.1, 1.6)
             //.with_scale(Vec3::new(0.5, 0.5, 0.5))
     ));
 
@@ -40,7 +53,7 @@ pub fn basic_scene_setup(
         SceneRoot(asset_server.load(
             GltfAssetLabel::Scene(0).from_asset("models/nature/grass4.glb"),
         )),
-        Transform::from_xyz(2.0, 0.0, 1.9)
+        Transform::from_xyz(2.0, 0.1, 1.9)
             .with_scale(Vec3::new(0.7, 0.7, 0.7))
     ));
 
@@ -49,7 +62,7 @@ pub fn basic_scene_setup(
         SceneRoot(asset_server.load(
             GltfAssetLabel::Scene(0).from_asset("models/nature/bush1default.glb"),
         )),
-        Transform::from_xyz(-1.2, 0.0, -1.6)
+        Transform::from_xyz(-1.2, 0.1, -1.6)
             //.with_scale(Vec3::new(0.6, 0.6, 0.6))
     ));
 
@@ -58,7 +71,7 @@ pub fn basic_scene_setup(
         SceneRoot(asset_server.load(
             GltfAssetLabel::Scene(0).from_asset("models/nature/treeBdefault.glb"),
         )),
-        Transform::from_xyz(1.2, 0.0, -1.6)
+        Transform::from_xyz(1.2, 0.1, -1.6)
             //.with_scale(Vec3::new(0.6, 0.6, 0.6))
     ));
 
