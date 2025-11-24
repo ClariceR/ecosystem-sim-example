@@ -31,11 +31,12 @@ fn setup(
         &asset_server,
     );
 
-
     // Light
     commands.spawn((
         PointLight {
+            intensity: 1_000_000.0,
             shadows_enabled: true,
+            range: 30.0,
             ..default()
         },
         Transform::from_xyz(4.0, 8.0, 4.0),
